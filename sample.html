@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Heartbeat Monitor</title>
+  </head>
+  <body>
+    <h1>Heartbeat Monitor</h1>
+    <p id="heartbeat">Waiting for data...</p>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+
+      // Update the heartbeat display when data is received from the server
+      socket.on('data', data => {
+        document.querySelector('#heartbeat').textContent = `Heartbeat: ${data.heartbeat} bpm`;
+      });
+    </script>
+  </body>
+</html>
